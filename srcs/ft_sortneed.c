@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 14:53:16 by mlagrang          #+#    #+#             */
-/*   Updated: 2021/12/29 14:21:18 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/01/04 12:09:08 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,17 @@ void	ft_good_place(int *tab1, int *tab2, int fd)
 
 	up = 0;
 	dn = 0;
-	i = 0;
-	while (tab1[i])
+	i = -1;
+	while (tab1[++i])
 	{
 		if (tab1[i] == tab2[0] + 1)
 			up = tab1[i];
 		if (tab1[i] == tab2[0] - 1)
 			dn = tab1[i];
-		i++;
 	}
 	i = ft_closeup(tab1, dn);
-	if ((ft_abs(ft_closeup(tab1, up)) < ft_abs(ft_closeup(tab1, dn)) && up != 0) || dn == 0)
+	if ((ft_abs(ft_closeup(tab1, up)) < ft_abs(ft_closeup(tab1, dn))
+			&& up != 0) || dn == 0)
 		i = ft_closeup(tab1, up);
 	while (i-- > 0)
 		ft_ra(tab1, fd);

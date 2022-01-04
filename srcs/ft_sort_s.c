@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 09:36:18 by mlagrang          #+#    #+#             */
-/*   Updated: 2021/12/29 13:20:32 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/01/04 11:07:30 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_sort_s(int *tab1, int *tab2, int len, int fd)
 	i = 0;
 	if (ft_sorted(tab1, tab2))
 		return ;
-	while (ft_last(tab1) != 2)
+	while (ft_last(tab1) > 2)
 		ft_pb(len, tab1, tab2, fd);
 	ft_trois(tab1, fd);
 	ft_solve_end_5(tab1, tab2, len, fd);

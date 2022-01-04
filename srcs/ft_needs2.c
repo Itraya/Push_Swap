@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:16:11 by mlagrang          #+#    #+#             */
-/*   Updated: 2021/12/29 09:58:04 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/01/04 12:12:04 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	ft_isnb(char *tab)
 	int	i;
 
 	i = 0;
+	if (tab[i] == '-')
+		i++;
 	while (tab[i])
 	{
 		if (!(tab[i] >= '0' && tab[i] <= '9'))
@@ -64,7 +66,7 @@ int	ft_verif(int ac, char **tab)
 	i = 1;
 	while (i < ac)
 	{
-		if (!ft_isnb(tab[i]))
+		if (!ft_isnb(tab[i]) || !ft_isatoi(tab[i]))
 			return (0);
 		j = 1;
 		while (j < ac && ft_atoi(tab[i]) != ft_atoi(tab[j]))
@@ -85,7 +87,7 @@ int	ft_vn(char **tab, int i)
 	nb = 0;
 	while (tab[j])
 	{
-		if (ft_abs(ft_atoi(tab[j])) < ft_abs(ft_atoi(tab[i])))
+		if (ft_atoi(tab[j]) < ft_atoi(tab[i]))
 			nb++;
 		j++;
 	}

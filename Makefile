@@ -6,13 +6,11 @@
 #    By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 15:34:21 by mlagrang          #+#    #+#              #
-#    Updated: 2021/12/29 10:13:30 by mlagrang         ###   ########.fr        #
+#    Updated: 2022/01/04 12:20:11 by mlagrang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	= srcs/ft_fun.c srcs/ft_fun2.c srcs/ft_needs.c srcs/ft_needs2.c srcs/ft_needs3.c srcs/ft_sort_l.c main.c srcs/ft_sort_s.c srcs/ft_sortneed.c srcs/ft_split.c
-
-SRCSCH	= srcs/ft_fun.c srcs/ft_fun2.c srcs/ft_needs.c srcs/ft_needs2.c srcs/ft_needs3.c srcs/ft_sort_l.c srcs/ft_sort_s.c srcs/ft_sortneed.c srcs/ft_split.c get_next_line.c get_next_line_utils.c checker.c
 
 HEADERS	= ft_PS.h
 
@@ -20,33 +18,36 @@ OBJS	= ${SRCS:.c=.o}
 
 NAME	= push_swap
 
-NAMECH	= checker
-
 CC		= gcc
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra
 
-%.o:%.c	ft_PS.h
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ft_PS.h
+%.o:	%.c	${HEADERS} Makefile
+		${CC} ${CFLAGS} -c $< -o $@
 
-${NAME}:	${SRCS}
+${NAME}:	${OBJS}
 			${CC} ${CFLAGS} ${SRCS} -o ${NAME}
 
 all:	${NAME}
 
-checker:	${SRCSCH}
-			${CC} ${CFLAGS} ${SRCSCH} -o ${NAMECH}
+5:		all
+		./${NAME} `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+
+100:	all
+		./${NAME} `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` 
+
+500:	all
+		./${NAME} `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` 
+
+t:		all
+		./${NAME} `ruby -e "puts (-250..250).to_a.shuffle.join(' ')"`
 
 clean:
 		rm -f ${OBJS}
 
 fclean:	clean
-		rm -f ${NAME} ${NAMECH}
+		rm -f ${NAME}
 
 re:		fclean all
 
-rechecker:	fclean checker
-
-rett:	fclean all checker
-
-.PHONY:	all clean fclean re bonus checker rechecker rett
+.PHONY:	all clean fclean re 5 100 500 t
