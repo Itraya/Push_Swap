@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:44:57 by mlagrang          #+#    #+#             */
-/*   Updated: 2022/01/04 12:02:06 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/02/02 09:42:03 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,16 @@ int	*prep_sort_l(char **tab, int u, int fd)
 	t[0] = ft_lastc(tab);
 	t[1] = u;
 	tab1 = malloc(sizeof(int) * (t[0] + 1));
+	if (!tab1)
+		return (NULL);
 	tab2 = malloc(sizeof(int) * (t[0] + 1));
-	ft_prep(tab1, tab2, tab, t[0]);
-	ft_sort_l(t, tab1, tab2, fd);
-	free(tab2);
-	return (tab1);
+	if (tab2)
+	{
+		ft_prep(tab1, tab2, tab, t[0]);
+		if (!ft_sorted(tab1, tab2))
+			ft_sort_l(t, tab1, tab2, fd);
+		free(tab2);
+		return (tab1);
+	}
+	return (NULL);
 }

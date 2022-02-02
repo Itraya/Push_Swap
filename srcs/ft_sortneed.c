@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 14:53:16 by mlagrang          #+#    #+#             */
-/*   Updated: 2022/01/04 12:09:08 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/01/05 09:28:31 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_trois(int *tab, int fd)
 {
-	if (tab[0] > tab[1] && tab[1] < tab[2] && tab[0] < tab[2])
+	if ((tab[0] > tab[1] && tab[1] < tab[2] && tab[0] < tab[2]) || tab[2] == 0)
 		ft_sa(tab, fd);
 	else if (tab[0] > tab[1] && tab[1] > tab[2] && tab[0] > tab[2])
 	{

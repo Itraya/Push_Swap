@@ -6,7 +6,7 @@
 #    By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 15:34:21 by mlagrang          #+#    #+#              #
-#    Updated: 2022/01/04 12:20:11 by mlagrang         ###   ########.fr        #
+#    Updated: 2022/01/05 10:01:11 by mlagrang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,10 @@ CC		= gcc
 
 CFLAGS	= -Wall -Wextra
 
+RANDOM5	= `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+
+ARG5	= 
+
 %.o:	%.c	${HEADERS} Makefile
 		${CC} ${CFLAGS} -c $< -o $@
 
@@ -31,13 +35,13 @@ ${NAME}:	${OBJS}
 all:	${NAME}
 
 5:		all
-		./${NAME} `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+		./${NAME} `ruby -e "puts (1..5).to_a.shuffle.join(' ')"` | wc -l
 
 100:	all
-		./${NAME} `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` 
+		./${NAME} `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
 
 500:	all
-		./${NAME} `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` 
+		./${NAME} `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
 
 t:		all
 		./${NAME} `ruby -e "puts (-250..250).to_a.shuffle.join(' ')"`

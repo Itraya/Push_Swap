@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:12:38 by mlagrang          #+#    #+#             */
-/*   Updated: 2022/01/04 12:19:35 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/02/02 09:44:56 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-char	*get_next_line(int fd);
-int		ft_strlen(char *a);
-int		ft_strlenn(char *a);
-char	*ft_join(char *a, char *b);
-int		ft_sch(char *a, char c);
-void	ft_cut(char *a);
 
 void	ft_sa(int *tab, int fd);
 void	ft_sb(int *tab, int fd);
@@ -59,9 +48,10 @@ int		ft_fl(char **tab);
 int		ft_abs(int a);
 int		ft_closeup(int *tab, int val);
 int		ft_closer(int *tab, int min, int max, int len);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char *s, char c);
 void	ft_small_first(int *tab1, int fd);
 int		ft_len(char **a);
 int		ft_isatoi(char *a);
+int		ft_sorted(int *tab1, int *tab2);
 
 #endif
