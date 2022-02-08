@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:15:35 by mlagrang          #+#    #+#             */
-/*   Updated: 2022/02/02 10:19:42 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/02/08 10:06:07 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ char	*ft_cjoin(char **av, int ac)
 	char	*s;
 
 	s = malloc(ft_lac(av) + ac);
+	if (!s)
+		return (0);
 	i = 1;
 	nb = -1;
 	while (av[i])
@@ -90,7 +92,11 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	a = ft_cjoin(av, ac);
+	if (!a)
+		return (0);
 	c = ft_split(a, ' ');
+	if (!c)
+		return (0);
 	c[0] = ft_strcpy(av[0]);
 	if (ft_verif(ft_len(c) - 1, c))
 	{
@@ -100,11 +106,8 @@ int	main(int ac, char **av)
 			t = prep_sort_l(c, (ac - 1) / 5, 1);
 		else
 			t = prep_sort_s(c, 1);
-		if (t == NULL)
-			return (0);
 		free(t);
 	}
 	else
-		write(1, "Error\n", 6);
-	ft_free(c);
+		write(2, "Error\n", 6);
 }

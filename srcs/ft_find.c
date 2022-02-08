@@ -1,63 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_needs.c                                         :+:      :+:    :+:   */
+/*   ft_find.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 15:15:43 by mlagrang          #+#    #+#             */
-/*   Updated: 2022/01/04 11:54:40 by mlagrang         ###   ########.fr       */
+/*   Created: 2022/02/08 09:54:06 by mlagrang          #+#    #+#             */
+/*   Updated: 2022/02/08 09:58:11 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_PS.h"
-
-int	ft_atoi(char *a)
-{
-	int	i;
-	int	c;
-	int	p;
-
-	i = 0;
-	c = 0;
-	p = 1;
-	if (!a || !a[0])
-		return (0);
-	if (a[i] == '-')
-	{
-		p = -1;
-		i++;
-	}
-	while (a[i])
-	{
-		c = c * 10 + (a[i] - '0');
-		i++;
-	}
-	return (c * p);
-}
-
-int	ft_fl(char **tab)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (tab[i][0] != '\0')
-	{
-		if (tab[j] < tab[i])
-			j = i;
-		i++;
-	}
-	return (j);
-}
-
-int	ft_abs(int a)
-{
-	if (a < 0)
-		a = -1 * a;
-	return (a);
-}
 
 int	ft_closeup(int *tab, int val)
 {
@@ -90,7 +43,43 @@ int	ft_closer(int *tab, int min, int max, int len)
 			j++;
 		i++;
 	}
-	if (len - i < i)
+	if (len - i < i - max - min)
 		return (0);
 	return (1);
+}
+
+int	ft_lastc(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i - 1);
+}
+
+void	ft_search(int *tab, int *minmax)
+{
+	int	i;
+
+	i = ft_closeup(tab, minmax[1]);
+	if (ft_abs(ft_closeup(tab, minmax[0])) < ft_abs(ft_closeup(tab, minmax[1])))
+		i = ft_closeup(tab, minmax[0]);
+	while (i-- > 0)
+		ft_rb(tab, minmax[3]);
+	i++;
+	while (i++ < 0)
+		ft_rrb(tab, minmax[3]);
+}
+
+int	ft_smolcloseup(int *tab, int *minmax)
+{
+	int	i;
+
+	if (tab[0] == minmax[0] || tab[0] == minmax[1])
+		return (0);
+	i = ft_closeup(tab, minmax[1]);
+	if (ft_abs(ft_closeup(tab, minmax[0])) < ft_abs(ft_closeup(tab, minmax[1])))
+		i = ft_closeup(tab, minmax[0]);
+	return (i);
 }

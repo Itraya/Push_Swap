@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:44:57 by mlagrang          #+#    #+#             */
-/*   Updated: 2022/02/02 09:42:03 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/02/03 10:58:32 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_sort_b(int *minmax, int *tab1, int *tab2, int len)
 {
 	while (tab2[0])
 	{
-		ft_search(tab2, minmax, len);
+		ft_search(tab2, minmax);
 		ft_pa(len, tab1, tab2, minmax[3]);
 		if (tab1[0] == minmax[0])
 		{
@@ -48,7 +48,7 @@ void	ft_nb_sort(int *minmax, int len, int *tab1, int *tab2)
 			ft_rra(tab1, minmax[3]);
 	}
 	if (minmax[0] != 1)
-		ft_putend(tab1, minmax);
+		ft_putend(tab1, tab2, minmax);
 	ft_sort_b(minmax, tab1, tab2, len);
 }
 
@@ -104,7 +104,9 @@ int	*prep_sort_l(char **tab, int u, int fd)
 		if (!ft_sorted(tab1, tab2))
 			ft_sort_l(t, tab1, tab2, fd);
 		free(tab2);
+		ft_free(tab);
 		return (tab1);
 	}
+	ft_free(tab);
 	return (NULL);
 }

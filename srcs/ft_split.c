@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:43:35 by mlagrang          #+#    #+#             */
-/*   Updated: 2022/02/02 10:19:23 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/02/03 11:00:47 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ static char	*mallocdef(char **tab, int j, int len)
 	return (tab[j]);
 }
 
+static char	**free_rt(char *a)
+{
+	free(a);
+	return (0);
+}
+
 char	**ft_split(char *s, char c)
 {
 	int		i;
@@ -64,7 +70,7 @@ char	**ft_split(char *s, char c)
 
 	tab = malloc(sizeof(char *) * (ft_nb_w(s, c) + 7));
 	if (!tab)
-		return (0);
+		return (free_rt(s));
 	i = 0;
 	j = 0;
 	while (++j < ft_nb_w(s, c) + 1)

@@ -6,21 +6,11 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:12:12 by mlagrang          #+#    #+#             */
-/*   Updated: 2021/12/29 10:07:04 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/02/02 14:00:29 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_PS.h"
-
-int	ft_last(int *tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i] != 0)
-		i++;
-	return (i - 1);
-}
 
 void	ft_sa(int *tab, int fd)
 {
@@ -76,4 +66,12 @@ void	ft_pb(int len, int *tab1, int *tab2, int fd)
 	tab1[i] = 0;
 	if (fd != 0)
 		write(fd, "pb\n", 3);
+}
+
+void	ft_rr(int *tab1, int *tab2, int fd)
+{
+	ft_ra(tab1, 0);
+	ft_rb(tab2, 0);
+	if (fd != 0)
+		write(fd, "rr\n", 3);
 }

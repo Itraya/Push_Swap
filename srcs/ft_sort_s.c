@@ -6,7 +6,7 @@
 /*   By: mlagrang <mlagrang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 09:36:18 by mlagrang          #+#    #+#             */
-/*   Updated: 2022/02/02 09:49:23 by mlagrang         ###   ########.fr       */
+/*   Updated: 2022/02/03 10:58:44 by mlagrang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,9 @@ int	*prep_sort_s(char **tab, int fd)
 		ft_prep(tab1, tab2, tab, len);
 		ft_sort_s(tab1, tab2, len, fd);
 		free(tab2);
+		ft_free(tab);
 		return (tab1);
 	}
+	ft_free(tab);
 	return (NULL);
 }
